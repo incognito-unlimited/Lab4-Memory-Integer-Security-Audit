@@ -1,0 +1,9 @@
+TEST HARNESS BUILD AND EXECUTION
+=================================
+
+Command: gcc -std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wformat=2 -Wstrict-prototypes -fPIE -pie -DSTUDENT_NO_MAIN \
+  remediated/student.c tests/test_harness.c -o build/test_harness \
+  -Wl,--wrap=malloc,--wrap=calloc,--wrap=realloc 2>&1
+--- complete compiler output ---
+
+Compiler exit status: 0

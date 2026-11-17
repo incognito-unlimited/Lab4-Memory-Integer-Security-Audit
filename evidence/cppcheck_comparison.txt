@@ -1,0 +1,48 @@
+CPPCHECK BEFORE-AND-AFTER COMPARISON - LAB 4
+============================================
+
+Tool: Cppcheck 2.19.0 (both runs)
+Identical command:
+  cppcheck --enable=all --inconclusive --std=c11 --suppress=missingIncludeSystem --template=gcc <file> 2>&1
+Exit status: 0 for both runs (--error-exitcode was not used).
+The informational [checkersReport] line is not counted as a finding.
+
+INVENTORY
+
+Original (evidence/cppcheck_original.txt): 12 findings
+  - doubleFree                     x1  (line 56)
+  - nullPointerOutOfMemory         x4  (lines 18, 19, 20, 21)
+  - constParameterPointer          x1  (line 45)
+  - staticFunction                 x6  (lines 13, 25, 33, 39, 45, 52)
+
+Remediated (evidence/cppcheck_fixed.txt): 6 findings
+  - staticFunction                 x6  (lines 48, 82, 107, 131, 156, 170)
+
+RESOLVED
+
+  - doubleFree at original line 56: each owned allocation is freed once.
+  - nullPointerOutOfMemory at original lines 18-21: every allocation is
+    checked and partial allocations are unwound before returning.
+  - constParameterPointer at original line 45: display_student now accepts
+    const Student *.
+
+REMAINING
+
+  - Six [staticFunction] advisories. These are intentional: the module's
+    functions form the auditable API and are called from tests/test_harness.c
+    in a separate translation unit. They are stylistic linkage suggestions,
+    not memory or integer defects. Declaring them static would break the
+    controlled test harness.
+
+NEWLY INTRODUCED
+
+  None.
+
+LIMITATION
+
+  Cppcheck did not report several confirmed defects, including the missing NUL
+  terminator, the strcpy() heap overflow, the off-by-one loop, signed overflow,
+  allocation-size multiplication overflow, unsafe realloc(), invalid resize
+  count, uninitialised grown elements and the post-destruction access. Those
+  were confirmed by manual review and by Valgrind Memcheck. Cppcheck output
+  therefore does not prove the absence of all security defects.

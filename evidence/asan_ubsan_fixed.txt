@@ -1,0 +1,33 @@
+ADDRESSSANITIZER AND UNDEFINEDBEHAVIOURSANITIZER - REMEDIATED
+==============================================================
+
+Date/time (UTC): 2026-11-17 23:00:01 UTC
+Compiler: Ubuntu clang version 21.1.8 (6ubuntu1)
+Build command: clang -std=c11 -g -O1 -Wall -Wextra -fsanitize=address,undefined -fno-omit-frame-pointer remediated/student.c -o build/student_asan_ubsan
+Run command: ASAN_OPTIONS=detect_leaks=1:halt_on_error=1 UBSAN_OPTIONS=halt_on_error=1:print_stacktrace=1 ./build/student_asan_ubsan 2>&1
+
+--- complete compiler output ---
+
+Sanitizer build exit status: 0
+--- complete program and sanitizer output ---
+Student: Alice
+Mark[0] = 80
+Mark[1] = 75
+Mark[2] = 90
+Mark[3] = 85
+Mark[4] = 95
+Total = 425
+Student: Alice
+Mark[0] = 85
+Mark[1] = 80
+Mark[2] = 95
+Mark[3] = 90
+Mark[4] = 100
+Mark[5] = 0
+Mark[6] = 0
+Mark[7] = 0
+Mark[8] = 0
+Mark[9] = 0
+First mark = 85
+
+Sanitized program exit status: 0

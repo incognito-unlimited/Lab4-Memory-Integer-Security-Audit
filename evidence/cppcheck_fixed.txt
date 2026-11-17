@@ -1,0 +1,32 @@
+CPPCHECK ANALYSIS - LAB 4
+==========================
+
+Tool: Cppcheck 2.19.0
+Command: cppcheck --enable=all --inconclusive --std=c11 --suppress=missingIncludeSystem --template=gcc remediated/student.c 2>&1
+Working directory: /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit
+Date/time (UTC): 2026-11-17 23:00:08 UTC
+
+--- complete cppcheck output ---
+Checking remediated/student.c ...
+remediated/student.c:48:10: warning: The function 'create_student' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+Student *create_student(const char *name, size_t count)
+         ^
+remediated/student.c:82:5: warning: The function 'calculate_total' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+int calculate_total(const Student *student, int64_t *total_out)
+    ^
+remediated/student.c:107:5: warning: The function 'add_bonus' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+int add_bonus(Student *student, int bonus)
+    ^
+remediated/student.c:131:5: warning: The function 'resize_marks' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+int resize_marks(Student *student, size_t new_count)
+    ^
+remediated/student.c:156:6: warning: The function 'display_student' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void display_student(const Student *student)
+     ^
+remediated/student.c:170:6: warning: The function 'destroy_student' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void destroy_student(Student **student)
+     ^
+nofile:0:0: warning: Active checkers: 119/975 (use --checkers-report=<filename> to see details) [checkersReport]
+
+
+cppcheck exit status: 0

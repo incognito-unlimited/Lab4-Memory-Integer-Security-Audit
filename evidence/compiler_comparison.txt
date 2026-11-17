@@ -1,0 +1,62 @@
+BEFORE-AND-AFTER COMPILER WARNING COMPARISON - LAB 4
+====================================================
+
+Compiler: gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+Identical flags for both builds:
+  -std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow
+  -Wformat=2 -Wstrict-prototypes -fstack-protector-strong -D_FORTIFY_SOURCE=2
+  -O2 -fPIE -pie -Wl,-z,relro,-z,now
+
+Both builds exited 0. Counts are diagnostic lines containing "warning:" in the
+complete saved logs; the informational header lines are not counted.
+
+CATEGORY                              ORIGINAL   REMEDIATED   REMOVED / REMAINING
+Format and type warnings              0          0            0 / 0
+Signed/unsigned conversion            4          0            4 / 0
+  (-Wsign-conversion)
+Bounds / array diagnostics            0          0            0 / 0
+  (compiler emitted none; Valgrind confirmed the original off-by-one)
+Allocation / nullability              0          0            0 / 0
+  (compiler emitted none; cppcheck reported these)
+Other warnings                        3          0            3 / 0
+  (-Wsign-compare signed/unsigned loop comparisons)
+TOTAL WARNINGS                        7          0            7 / 0
+
+EXACT WARNINGS REMOVED (all from compiler_original.txt)
+
+  1. original/student.c:20:16 [-Wsign-conversion]
+     conversion to 'size_t' from 'int' may change the sign of the result
+     (s->count = count)
+  2. original/student.c:21:29 [-Wsign-conversion]
+     conversion to 'long unsigned int' from 'int' may change the sign
+     (count * sizeof(int))
+  3. original/student.c:28:23 [-Wsign-compare]
+     comparison of integer expressions of different signedness: int and size_t
+     (i <= s->count)
+  4. original/student.c:35:23 [-Wsign-compare]
+     comparison of integer expressions of different signedness: int and size_t
+     (i < s->count)
+  5. original/student.c:41:44 [-Wsign-conversion]
+     conversion to 'long unsigned int' from 'int' may change the sign
+     (new_count * sizeof(int))
+  6. original/student.c:42:16 [-Wsign-conversion]
+     conversion to 'size_t' from 'int' may change the sign of the result
+     (s->count = new_count)
+  7. original/student.c:48:23 [-Wsign-compare]
+     comparison of integer expressions of different signedness: int and size_t
+     (i < s->count)
+
+WARNINGS REMAINING
+
+  None in compiler_fixed.txt.
+
+WARNINGS NEWLY INTRODUCED
+
+  None.
+
+LIMITATION
+
+  GCC did not warn about the off-by-one read, the unsafe strcpy(), the
+  unchecked realloc(), the double free or the use-after-free. Absence of a
+  compiler warning is not evidence that those defects are absent; the audit
+  used source review, cppcheck, Valgrind Memcheck and ASan/UBSan as well.

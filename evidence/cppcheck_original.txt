@@ -1,0 +1,92 @@
+CPPCHECK ANALYSIS - LAB 4
+==========================
+
+Tool: Cppcheck 2.19.0
+Command: cppcheck --enable=all --inconclusive --std=c11 --suppress=missingIncludeSystem --template=gcc original/student.c 2>&1
+Working directory: /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit
+Date/time (UTC): 2026-11-17 23:00:08 UTC
+
+--- complete cppcheck output ---
+Checking original/student.c ...
+original/student.c:56:5: warning: Memory pointed to by 'name' is freed twice. [doubleFree]
+    free(s->name);
+    ^
+original/student.c:54:5: note: Memory pointed to by 'name' is freed twice.
+    free(s->name);
+    ^
+original/student.c:56:5: note: Memory pointed to by 'name' is freed twice.
+    free(s->name);
+    ^
+original/student.c:18:5: warning: If memory allocation fails, then there is a possible null pointer dereference: s [nullPointerOutOfMemory]
+    s->name = malloc(strlen(name));
+    ^
+original/student.c:15:24: note: Assuming allocation function fails
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:15:24: note: Assignment 's=malloc(sizeof(struct Student))', assigned value is 0
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:18:5: note: Null pointer dereference
+    s->name = malloc(strlen(name));
+    ^
+original/student.c:19:12: warning: If memory allocation fails, then there is a possible null pointer dereference: s [nullPointerOutOfMemory]
+    strcpy(s->name, name);
+           ^
+original/student.c:15:24: note: Assuming allocation function fails
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:15:24: note: Assignment 's=malloc(sizeof(struct Student))', assigned value is 0
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:19:12: note: Null pointer dereference
+    strcpy(s->name, name);
+           ^
+original/student.c:20:5: warning: If memory allocation fails, then there is a possible null pointer dereference: s [nullPointerOutOfMemory]
+    s->count = count;
+    ^
+original/student.c:15:24: note: Assuming allocation function fails
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:15:24: note: Assignment 's=malloc(sizeof(struct Student))', assigned value is 0
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:20:5: note: Null pointer dereference
+    s->count = count;
+    ^
+original/student.c:21:5: warning: If memory allocation fails, then there is a possible null pointer dereference: s [nullPointerOutOfMemory]
+    s->marks = malloc(count * sizeof(int));
+    ^
+original/student.c:15:24: note: Assuming allocation function fails
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:15:24: note: Assignment 's=malloc(sizeof(struct Student))', assigned value is 0
+    Student *s = malloc(sizeof(Student));
+                       ^
+original/student.c:21:5: note: Null pointer dereference
+    s->marks = malloc(count * sizeof(int));
+    ^
+original/student.c:45:31: warning: Parameter 's' can be declared as pointer to const [constParameterPointer]
+void display_student(Student *s)
+                              ^
+original/student.c:13:10: warning: The function 'create_student' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+Student *create_student(const char *name, int count)
+         ^
+original/student.c:25:5: warning: The function 'calculate_total' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+int calculate_total(Student *s)
+    ^
+original/student.c:33:6: warning: The function 'add_bonus' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void add_bonus(Student *s, int bonus)
+     ^
+original/student.c:39:6: warning: The function 'resize_marks' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void resize_marks(Student *s, int new_count)
+     ^
+original/student.c:45:6: warning: The function 'display_student' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void display_student(Student *s)
+     ^
+original/student.c:52:6: warning: The function 'destroy_student' should have static linkage since it is not used outside of its translation unit. [staticFunction]
+void destroy_student(Student *s)
+     ^
+nofile:0:0: warning: Active checkers: 119/975 (use --checkers-report=<filename> to see details) [checkersReport]
+
+
+cppcheck exit status: 0

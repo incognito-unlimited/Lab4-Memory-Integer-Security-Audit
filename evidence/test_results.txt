@@ -1,0 +1,36 @@
+ADDITIONAL TEST CASES - LAB 4 MEMORY AND INTEGER SECURITY AUDIT
+=================================================================
+
+Date/time (UTC): 2026-11-17 23:00:00 UTC
+Working directory: /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit
+Build command: gcc -std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wformat=2 -Wstrict-prototypes -fPIE -pie -DSTUDENT_NO_MAIN remediated/student.c tests/test_harness.c -o build/test_harness -Wl,--wrap=malloc,--wrap=calloc,--wrap=realloc
+Allocation failures are injected with linker --wrap entry points; no undefined behaviour is used to produce results.
+
+--- complete program output ---
+LAB 4 ADDITIONAL TEST CASES - CONTROLLED EXECUTION
+===================================================
+
+TEST 01: Normal creation for name 'Alice' and 5 marks               PASS
+TEST 02: Name exactly MAX_NAME characters accepted                  PASS
+TEST 03: Name exceeding MAX_NAME rejected                           PASS
+TEST 04: NULL name rejected                                         PASS
+TEST 05: Zero marks count rejected                                  PASS
+TEST 06: Excessive count rejected before allocation                 PASS
+TEST 07: Normal total calculation equals 425                        PASS
+TEST 08: Total with five INT_MAX marks uses int64_t accumulation    PASS
+TEST 09: Bonus +5 applied within INT range                          PASS
+TEST 10: Overflowing bonus rejected without partial modification    PASS
+TEST 11: Resize 5 -> 10 preserves data and zeroes new slots         PASS
+TEST 12: Resize 10 -> 3 preserves existing elements                 PASS
+TEST 13: Invalid resize counts rejected; original data preserved    PASS
+TEST 14: First malloc (name) failure returns NULL                   PASS
+TEST 15: Student calloc failure returns NULL                        PASS
+TEST 16: Marks calloc failure unwinds partial allocation            PASS
+TEST 17: realloc failure preserves original pointer and data        PASS
+TEST 18: Destroy nulls the caller's pointer                         PASS
+TEST 19: Repeated destroy and NULL caller pointer are safe          PASS
+
+SUMMARY: 19 checks executed, 0 failed
+RESULT: ALL TESTS PASSED
+
+Test harness exit status: 0

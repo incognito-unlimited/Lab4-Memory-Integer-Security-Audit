@@ -1,0 +1,5 @@
+REMEDIATED SOURCE - WARNING BASELINE
+Command: gcc -std=c11 -Wall -Wextra -Wpedantic -Wconversion -Wsign-conversion -Wshadow -Wformat=2 -Wstrict-prototypes -fstack-protector-strong -D_FORTIFY_SOURCE=2 -O2 -fPIE -pie -Wl,-z,relro,-z,now remediated/student.c -o build/student_fixed 2>&1
+--- complete compiler output ---
+
+Compiler exit status: 0

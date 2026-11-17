@@ -1,0 +1,144 @@
+VALGRIND MEMCHECK - ORIGINAL PROGRAM (SUPPORTING EVIDENCE)
+==========================================================
+
+Command: valgrind --tool=memcheck --track-origins=yes --leak-check=full --show-leak-kinds=all --errors-for-leak-kinds=all ./build/student_original 2>&1
+
+--- complete program and Valgrind output ---
+==434== Memcheck, a memory error detector
+==434== Copyright (C) 2002-2024, and GNU GPL'd, by Julian Seward et al.
+==434== Using Valgrind-3.26.0 and LibVEX; rerun with -h for copyright info
+==434== Command: ./build/student_original
+==434== 
+==434== Invalid write of size 1
+==434==    at 0x485A2F6: strcpy (vg_replace_strmem.c:565)
+==434==    by 0x400137E: create_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001115: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Address 0x4a910a5 is 0 bytes after a block of size 5 alloc'd
+==434==    at 0x4850858: malloc (vg_replace_malloc.c:447)
+==434==    by 0x400136F: create_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001115: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Invalid read of size 1
+==434==    at 0x485A174: strlen (vg_replace_strmem.c:506)
+==434==    by 0x48DC947: __printf_buffer (vfprintf-process-arg.c:443)
+==434==    by 0x48DD767: __vfprintf_internal (vfprintf-internal.c:1548)
+==434==    by 0x49B1D3C: __printf_chk (printf_chk.c:33)
+==434==    by 0x40014E2: display_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001136: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Address 0x4a910a5 is 0 bytes after a block of size 5 alloc'd
+==434==    at 0x4850858: malloc (vg_replace_malloc.c:447)
+==434==    by 0x400136F: create_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001115: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Invalid read of size 4
+==434==    at 0x4001150: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Address 0x4a91104 is 0 bytes after a block of size 20 alloc'd
+==434==    at 0x4850858: malloc (vg_replace_malloc.c:447)
+==434==    by 0x400138E: create_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001115: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Use of uninitialised value of size 8
+==434==    at 0x48D0062: _itoa_word (_fitoa_word.c:38)
+==434==    by 0x48DB61C: __printf_buffer (vfprintf-process-arg.c:155)
+==434==    by 0x48DD767: __vfprintf_internal (vfprintf-internal.c:1548)
+==434==    by 0x49B1D3C: __printf_chk (printf_chk.c:33)
+==434==    by 0x400150F: display_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x400121E: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Uninitialised value was created by a heap allocation
+==434==    at 0x485807F: realloc (vg_replace_malloc.c:1804)
+==434==    by 0x400120A: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Conditional jump or move depends on uninitialised value(s)
+==434==    at 0x48D0069: _itoa_word (_fitoa_word.c:38)
+==434==    by 0x48DB61C: __printf_buffer (vfprintf-process-arg.c:155)
+==434==    by 0x48DD767: __vfprintf_internal (vfprintf-internal.c:1548)
+==434==    by 0x49B1D3C: __printf_chk (printf_chk.c:33)
+==434==    by 0x400150F: display_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x400121E: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Uninitialised value was created by a heap allocation
+==434==    at 0x485807F: realloc (vg_replace_malloc.c:1804)
+==434==    by 0x400120A: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Conditional jump or move depends on uninitialised value(s)
+==434==    at 0x48DBFAA: __printf_buffer (vfprintf-process-arg.c:186)
+==434==    by 0x48DD767: __vfprintf_internal (vfprintf-internal.c:1548)
+==434==    by 0x49B1D3C: __printf_chk (printf_chk.c:33)
+==434==    by 0x400150F: display_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x400121E: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Uninitialised value was created by a heap allocation
+==434==    at 0x485807F: realloc (vg_replace_malloc.c:1804)
+==434==    by 0x400120A: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Conditional jump or move depends on uninitialised value(s)
+==434==    at 0x48DC414: __printf_buffer (vfprintf-process-arg.c:208)
+==434==    by 0x48DD767: __vfprintf_internal (vfprintf-internal.c:1548)
+==434==    by 0x49B1D3C: __printf_chk (printf_chk.c:33)
+==434==    by 0x400150F: display_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x400121E: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Uninitialised value was created by a heap allocation
+==434==    at 0x485807F: realloc (vg_replace_malloc.c:1804)
+==434==    by 0x400120A: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Invalid free() / delete / delete[] / realloc()
+==434==    at 0x48538BF: free (vg_replace_malloc.c:990)
+==434==    by 0x4001540: destroy_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001226: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Address 0x4a910a0 is 0 bytes inside a block of size 5 free'd
+==434==    at 0x48538BF: free (vg_replace_malloc.c:990)
+==434==    by 0x400152F: destroy_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001226: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Block was alloc'd at
+==434==    at 0x4850858: malloc (vg_replace_malloc.c:447)
+==434==    by 0x400136F: create_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001115: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Invalid read of size 8
+==434==    at 0x4001227: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Address 0x4a91048 is 8 bytes inside a block of size 24 free'd
+==434==    at 0x48538BF: free (vg_replace_malloc.c:990)
+==434==    by 0x4001226: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Block was alloc'd at
+==434==    at 0x4850858: malloc (vg_replace_malloc.c:447)
+==434==    by 0x4001356: create_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001115: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+==434== Invalid read of size 4
+==434==    at 0x4001237: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Address 0x4a92190 is 0 bytes inside a block of size 40 free'd
+==434==    at 0x48538BF: free (vg_replace_malloc.c:990)
+==434==    by 0x4001538: destroy_student (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==    by 0x4001226: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434==  Block was alloc'd at
+==434==    at 0x485807F: realloc (vg_replace_malloc.c:1804)
+==434==    by 0x400120A: main (in /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit/build/student_original)
+==434== 
+Student: Alice
+Mark[0] = 80
+Mark[1] = 75
+Mark[2] = 90
+Mark[3] = 85
+Mark[4] = 95
+Total = 425
+Student: Alice
+Mark[0] = 85
+Mark[1] = 80
+Mark[2] = 95
+Mark[3] = 90
+Mark[4] = 100
+Mark[5] = 0
+Mark[6] = 0
+Mark[7] = 0
+Mark[8] = 0
+Mark[9] = 0
+First mark = 85
+==434== 
+==434== HEAP SUMMARY:
+==434==     in use at exit: 0 bytes in 0 blocks
+==434==   total heap usage: 5 allocs, 6 frees, 4,185 bytes allocated
+==434== 
+==434== All heap blocks were freed -- no leaks are possible
+==434== 
+==434== For lists of detected and suppressed errors, rerun with: -s
+==434== ERROR SUMMARY: 27 errors from 10 contexts (suppressed: 0 from 0)
+
+Valgrind original exit status: 0

@@ -1,0 +1,20 @@
+# Build output and compiled binaries
+build/
+*.o
+*.obj
+*.exe
+*.out
+*.so
+*.dll
+*.a
+
+# Program-generated output
+student.txt
+
+# Python / DOCX tooling artefacts
+__pycache__/
+*.py[cod]
+
+# OS files
+.DS_Store
+Thumbs.db

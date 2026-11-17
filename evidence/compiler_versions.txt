@@ -1,0 +1,15 @@
+COMPILER WARNING ANALYSIS - LAB 4
+==================================
+
+Date/time (UTC): 2026-11-17 22:59:31 UTC
+Working directory: /mnt/d/Projects/Lab4-Memory-Integer-Security-Audit
+
+gcc --version
+gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+
+clang --version
+Ubuntu clang version 21.1.8 (6ubuntu1)
+
+Platform: Ubuntu 26.04.1 LTS (Linux 6.18.58.1-microsoft-standard-WSL2)
+Linux/ELF linker hardening is supported; -Wl,-z,relro,-z,now is used for both builds.
+
